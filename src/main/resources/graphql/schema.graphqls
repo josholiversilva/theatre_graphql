@@ -1,0 +1,36 @@
+type Query {
+    bookById(id: ID): Book
+    movieById(id: ID): Movie
+}
+
+type Mutation {
+    createMovie(name: String, genre: String, director: String)
+}
+
+type Book {
+    id: ID
+    name: String
+    pageCount: Int
+    author: Author
+}
+
+type Author {
+    id: ID
+    firstName: String
+    lastName: String
+}
+
+type Movie {
+    id: ID
+    name: String
+    genre: String
+    director: String
+    timestamp: String
+}
+
+type User {
+    id: ID
+    name: String
+    gender: String
+    created: String
+}
