@@ -5,6 +5,7 @@ import lombok.Builder;
 @Builder
 public record Movie(
         String id,
+        String userId,
         String name,
         String genre,
         String director,

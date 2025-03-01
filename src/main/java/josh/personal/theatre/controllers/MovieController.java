@@ -21,8 +21,8 @@ public class MovieController {
     }
 
     @MutationMapping
-    public Movie createMovie(@Argument String name, String genre, String director) {
-        Movie movie = movieService.createMovie(name, genre, director);
+    public Movie createMovie(@Argument String userId, String name, String genre, String director) {
+        Movie movie = movieService.createMovie(userId, name, genre, director);
         movieService.cacheMovie(movie);
 
         return movie;

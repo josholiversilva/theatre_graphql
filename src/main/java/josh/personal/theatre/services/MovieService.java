@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.util.Optional;
 
 @Service
@@ -21,12 +22,14 @@ public class MovieService {
         lru.add(movie);
     }
 
-    public Movie createMovie(String name, String genre, String director) {
+    public Movie createMovie(String userId, String name, String genre, String director) {
         return Movie.builder()
                 .id(Integer.toString(lru.size))
                 .name(name)
                 .genre(genre)
                 .director(director)
+                .timestamp(LocalTime.now().toString())
+                .userId(userId)
                 .build();
     }
 }
