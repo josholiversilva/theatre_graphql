@@ -8,13 +8,14 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MovieService {
     @Autowired
     private LRU lru;
 
-    public Optional<Movie> getMovieById(@Argument String id) {
+    public Optional<Movie> getMovieById(@Argument UUID id) {
         return lru.get(id);
     }
 
@@ -22,14 +23,13 @@ public class MovieService {
         lru.add(movie);
     }
 
-    public Movie createMovie(String userId, String name, String genre, String director) {
+    public Movie createMovie(String name, String genre, String director) {
         return Movie.builder()
-                .id(Integer.toString(lru.size))
+                .id(UUID.randomUUID())
                 .name(name)
                 .genre(genre)
                 .director(director)
                 .timestamp(LocalTime.now().toString())
-                .userId(userId)
                 .build();
     }
 }

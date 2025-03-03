@@ -4,7 +4,7 @@ type Query {
 }
 
 type Mutation {
-    createMovie(userId: ID, name: String, genre: String, director: String): Movie
+    createMovie(name: String, genre: String, director: String): Movie
 }
 
 type Book {
@@ -22,7 +22,6 @@ type Author {
 
 type Movie {
     id: ID
-    userId: ID
     name: String
     genre: String
     director: String

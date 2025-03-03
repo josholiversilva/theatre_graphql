@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class LRU {
     public final int size;
-    private final HashMap<String, Node<Movie>> map = new HashMap<>();
+    private final HashMap<UUID, Node<Movie>> map = new HashMap<>();
     private Node<Movie> head;
     private josh.personal.theatre.cache.Node<Movie> tail;
 
@@ -41,7 +42,7 @@ public class LRU {
         map.put(movie.id(), newNode);
     }
 
-    public Optional<Movie> get(String movieId) {
+    public Optional<Movie> get(UUID movieId) {
         final Node<Movie> node = map.get(movieId);
         if (node == null) {
             return Optional.empty();

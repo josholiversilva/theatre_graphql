@@ -2,12 +2,14 @@ package josh.personal.theatre.models;
 
 import lombok.Builder;
 
+import java.util.UUID;
+
 @Builder
 public record Movie(
-        String id,
-        String userId,
+        UUID id,
         String name,
         String genre,
         String director,
-        String timestamp) {
+        String timestamp,
+        String user) {
 }
